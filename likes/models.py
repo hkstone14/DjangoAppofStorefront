@@ -4,7 +4,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.auth.models import User
 
 
-
+#Liked class for independent likes tracking
 class LikedItem(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content_type = models.ForeignKey(ContentType, on_delete=models.CASCADE)

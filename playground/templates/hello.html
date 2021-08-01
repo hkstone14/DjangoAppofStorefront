@@ -2,7 +2,7 @@
 <ul>
 {% if products %}
     {% for product in products %}
-    <li>{{ product.first_name}}  {{ product.last_name }} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{ product.email }}</li>
+    <li>{{ product.title }} {{ product.collection__title }}</li>
     {% endfor %}
 {% endif %}
 </ul>

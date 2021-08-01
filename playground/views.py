@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from store.models import Product
+from store.models import Customer
 
 
 # returning html templates on user request
@@ -13,10 +14,16 @@ def say_hello(request):
     #     print(product)
 
     # for one product from Product class
-    try:
-        product = Product.objects.get(pk=1)  # This will return actual product with pk=1 which is id=1
-        print(product)
-    except ObjectDoesNotExist:
-        pass
+    # try:
+    #     product = Product.objects.get(pk=1)  # This will return actual product(not query set) with pk=1 which is id=1
+    #     print(product)
+    # except ObjectDoesNotExist:
+    #     pass
 
-    return render(request, 'hello.html')
+    # filtering the data
+    query_set1 = Product.objects.filter(price__gt=20)  # return query set od products with price > 20
+
+    for product in query_set1:
+        print(product.price)
+
+    return render(request, 'hello.html', {'products': list(query_set1)})

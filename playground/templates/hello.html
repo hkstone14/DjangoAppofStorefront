@@ -1,2 +1,9 @@
 <h1>Hello World</h1>
+<ul>
+{% if products %}
+    {% for product in products %}
+    <li>{{ product.title }}</li>
+    {% endfor %}
+{% endif %}
+</ul>
 

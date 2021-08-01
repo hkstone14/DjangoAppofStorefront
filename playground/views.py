@@ -20,10 +20,13 @@ def say_hello(request):
     # except ObjectDoesNotExist:
     #     pass
 
-    # filtering the data
-    query_set1 = Product.objects.filter(price__gt=20)  # return query set od products with price > 20
+    #  filtering the data
+    # query_set1 = Product.objects.filter(price__gt=20)  # return query set od products with price > 20
+    #
+    # for product in query_set1:
+    #     print(product.price)
 
-    for product in query_set1:
-        print(product.price)
+    # filtering customer data with .com email
+    customer = Customer.objects.filter(email__icontains='.com')
 
-    return render(request, 'hello.html', {'products': list(query_set1)})
+    return render(request, 'hello.html', {'products': list(customer)})

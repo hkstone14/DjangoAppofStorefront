@@ -1,8 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
-from store.models import Product
-from store.models import Customer
+from store.models import Product, Customer, OrderItem
 
 
 # returning html templates on user request
@@ -38,4 +37,8 @@ def say_hello(request):
 
     # query with related field
     product1 = Product.objects.values('title', 'collection__title') # return product title with appropriate collection type : pen--> stationary
-    return render(request, 'hello.html', {'products': list(product1)})
+
+    # Item which has been ordered.
+    query_set = Product.objects.filter(id__in=OrderItem.objects.values('product_id').distinct()).order_by('title')
+
+    return render(request, 'hello.html', {'products': list(query_set)})

@@ -30,4 +30,9 @@ def say_hello(request):
     # filtering customer data with .com email
     customer = Customer.objects.filter(email__icontains='.com')
 
+    # sorting the data
+    product = Product.objects.order_by('price')  # it will return query set
+    product = Product.objects.order_by('price')[0] # it will return 1st product after making order in ASC order.
+    product = Product.objects.earliest('price') # same as above
+    product = Product.objects.latest('price') # it will return first product after DESC order
     return render(request, 'hello.html', {'products': list()})

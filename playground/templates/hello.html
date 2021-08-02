@@ -2,7 +2,7 @@
 <ul>
 {% if products %}
     {% for product in products %}
-    <li>{{ product.title }}</li>
+    <li>{{ product.title }} ${{ product.price }}</li>
     {% endfor %}
 {% endif %}
 </ul>

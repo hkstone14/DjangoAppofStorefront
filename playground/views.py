@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.contenttypes.models import ContentType
 from django.db.models.aggregates import Count, Min, Max, Avg
-from store.models import Product, Customer, OrderItem
+from store.models import Product, Customer, OrderItem, Collection
 from tags.models import TaggedItem
 
 
@@ -47,6 +47,13 @@ def say_hello(request):
     # # Aggregates functions
     # result = Product.objects.aggregate(count=Count('id'), min_price=Min('price'))
 
-    content_type = ContentType.objects.get_for_model(Product)
-    query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
-    return render(request, 'hello.html', {'result': list(query_set3)})
+    # content_type = ContentType.objects.get_for_model(Product)
+    # query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
+
+    # Creating an object to the DB
+    collection = Collection()
+    collection.title = 'Video Games'
+    collection.featured_product = Product(pk=1)
+    collection.save()  # this will send new object to the database
+
+    return render(request, 'hello.html', {'result': list()})

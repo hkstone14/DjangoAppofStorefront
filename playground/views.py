@@ -51,9 +51,16 @@ def say_hello(request):
     # query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
 
     # Creating an object to the DB
-    collection = Collection()
-    collection.title = 'Video Games'
-    collection.featured_product = Product(pk=1)
+    collection = Collection(pk=11)  #This will get an item from Collection table with prim. key = 11
+    collection.title = 'Games'
+    collection.featured_product = None
     collection.save()  # this will send new object to the database
+
+    #Updating an object
+    collection = Collection.objects.get(pk=11)
+    collection.title = 'Video Games'
+    collection.featured_product = None
+    collection.save()
+
 
     return render(request, 'hello.html', {'result': list()})

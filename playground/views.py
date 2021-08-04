@@ -62,5 +62,8 @@ def say_hello(request):
     collection.featured_product = None
     collection.save()
 
+    # Deleting a single object
+    collection = Collection(pk=11)
+    collection.delete()
 
     return render(request, 'hello.html', {'result': list()})

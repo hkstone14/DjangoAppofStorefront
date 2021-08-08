@@ -56,11 +56,11 @@ def say_hello(request):
     collection.featured_product = None
     collection.save()  # this will send new object to the database
 
-    # #Updating an object
-    # collection = Collection.objects.get(pk=11)
-    # collection.title = 'Video Games'
-    # collection.featured_product = None
-    # collection.save()
+    #Updating an object
+    collection = Collection.objects.get(pk=11)
+    collection.title = 'Video Games'
+    collection.featured_product = None
+    collection.save()
 
     # Deleting a single object
     collection = Collection(pk=11)

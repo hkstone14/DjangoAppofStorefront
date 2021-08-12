@@ -41,14 +41,14 @@ def say_hello(request):
     # query with related field
     product1 = Product.objects.values('title', 'collection__title') # return product title with appropriate collection type : pen--> stationary
 
-    # # Item which has been ordered.
-    # query_set12 = Product.objects.filter(id__in=OrderItem.objects.values('product_id').distinct()).order_by('title')
-    #
-    # # Aggregates functions
-    # result = Product.objects.aggregate(count=Count('id'), min_price=Min('price'))
-    #
-    # content_type = ContentType.objects.get_for_model(Product)
-    # query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
+    # Item which has been ordered.
+    query_set12 = Product.objects.filter(id__in=OrderItem.objects.values('product_id').distinct()).order_by('title')
+
+    # Aggregates functions
+    result = Product.objects.aggregate(count=Count('id'), min_price=Min('price'))
+
+    content_type = ContentType.objects.get_for_model(Product)
+    query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
 
     # Creating an object to the DB
     collection = Collection(pk=11)  #This will get an item from Collection table with prim. key = 11

@@ -50,7 +50,7 @@ def say_hello(request):
     content_type = ContentType.objects.get_for_model(Product)
     query_set3 = TaggedItem.objects.select_related('tag').filter(content_type=content_type, object_id=1)
 
-    # Creating an object to the DB
+    # Creating an object
     collection = Collection(pk=11)  #This will get an item from Collection table with prim. key = 11
     collection.title = 'Games'
     collection.featured_product = None

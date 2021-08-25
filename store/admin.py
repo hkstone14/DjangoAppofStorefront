@@ -12,9 +12,13 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(models.Customer)
 class CustomerAdmin(admin.ModelAdmin):
-    list_display = ['first_name', 'last_name']
+    list_display = ['first_name', 'last_name', 'membership']
+
     ordering = ['first_name', 'last_name']
     list_per_page = 10
+
+    def membership(self, customer):
+        return customer.MEMBERSHIP_CHOICES[1][1]
 
 
 admin.site.register(models.Collection)

@@ -62,7 +62,7 @@ def say_hello(request):
     collection.featured_product = None
     collection.save()
 
-    # Deleting a single
+    # Deleting a single from DB
     collection = Collection(pk=11)
     collection.delete()
 

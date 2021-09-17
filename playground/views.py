@@ -56,7 +56,7 @@ def say_hello(request):
     collection.featured_product = None
     collection.save()  # this will send new object to the database
 
-    #Updating an object
+    #Updating an object to DB
     collection = Collection.objects.get(pk=11)
     collection.title = 'Video Games'
     collection.featured_product = None

@@ -44,7 +44,7 @@ def say_hello(request):
     # # Item which has been ordered.
     # query_set12 = Product.objects.filter(id__in=OrderItem.objects.values('product_id').distinct()).order_by('title')
     #
-    # # Aggregates functions
+    # # Aggregates functions for DB
     # result = Product.objects.aggregate(count=Count('id'), min_price=Min('price'))
     #
     # content_type = ContentType.objects.get_for_model(Product)
